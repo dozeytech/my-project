@@ -1,0 +1,31 @@
+{% extends 'my_meetup/main.html'%}
+{% block title%}Add Speaker {%endblock%}
+
+{% block meetups%} 
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h1>Add Speaker</h1>
+
+<form method="POST" action=""  enctype="multipart/form-data">
+    {%csrf_token%}
+    <p>
+
+        {{form.as_p}}
+    </p>
+
+
+    <button type="submit" class="btn btn-primary"> Add speaker</button>
+
+
+</form><br>
+
+        </div>
+    </div>
+</div>
+
+
+{%endblock%}
+{%block services%}{%endblock%}
+{%block about%}{%endblock%}
+{%block Testimonial%}{%endblock%}

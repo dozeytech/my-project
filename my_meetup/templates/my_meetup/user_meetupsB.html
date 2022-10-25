@@ -1,0 +1,39 @@
+<h1> My Meetups</h1>
+<span><a href="{% url 'home'%}">back</a></span>
+<h3><a href="{% url 'create-meetup'%}">Add Meetups</a></h3><br>
+
+<hr>
+  
+    <form method="GET" action="">
+        {%csrf_token%}
+        <input type="text" name="q" placeholder="search" required/>
+        <input type="submit" value="search"/>
+
+
+    </form>
+    <p><a href="{% url 'user-meetups' request.user.id%}">All</a></p>
+<table border="1">
+    <tr>
+        <th>Title</th>
+        <th>Organizer Email</th>
+        <th>Description</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>Add Speakers</th>
+
+    </tr>
+    {% for meetup in meetups %}
+    <tr>
+        <td>{{meetup.title}}</td>
+        <td>{{meetup.organizer_email}}</td>
+        <td>{{meetup.description}}</td>
+        <td> <a href="{% url 'meetup-update' meetup.id%}" target="_new">Edit</a></td>
+
+        <td> <a href="{% url 'meetup-delete' meetup.id%}" target="_new">Delete</a></td>
+        <td> <a href="{% url 'add-speaker' meetup.slug%}" target="_new">Add Speakers</a></td>
+    </tr>
+    {%endfor%}
+
+
+</table>
+<p>Number of meetups : {{count}}</p>

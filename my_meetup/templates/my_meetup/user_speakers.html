@@ -1,0 +1,37 @@
+{% extends 'my_meetup/main.html'%}
+{% block title%}user speaker{%endblock%}
+
+{% block meetups%} 
+<div class="container-fluid bg-dark p-5">
+<div class="row ">
+    {% for speaker in speakers %}
+    <div class="col-md-4 col-lg-4  my-5 ">
+           <div class="card">
+                <img src= "{{speaker.image.url}}" style="height: 200px; object-fit:cover" class="card-img-top" alt="mettp-image"/>
+       
+        <div class="card-body">
+            <div class="card-title">
+
+               <h5>{{speaker.title | truncatewords:3}}</h5> 
+            </div>
+            <div class="card-sub-title">
+                <p>Email: {{speaker.email}}</p>
+                <p>Meetup name: {{speaker.meetup_name}}</p>
+              
+              <a href="{% url 'meetup-update'  speaker.id%}" target="_new" class="btn btn-outline-primary">Edit</a>
+              
+            </div>
+        </div>
+    </div>
+</div>
+    {%endfor%}
+
+</div>
+
+</div>
+
+{%endblock%}
+{%block services%}{%endblock%}
+{%block about%}{%endblock%}
+{%block Testimonial%}{%endblock%}
+

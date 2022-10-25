@@ -1,0 +1,9 @@
+<h2>Are you sure you want to delete {{meetup}}</h2>
+<form method="POST">
+    {%csrf_token%}
+    <a href="{%url 'home'%}">Back</a>
+    <input type="submit" value="Delete"/>
+
+
+
+</form>

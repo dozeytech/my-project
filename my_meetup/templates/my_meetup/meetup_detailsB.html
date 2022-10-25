@@ -1,0 +1,17 @@
+
+<img style="width:400; height:400," src="{{meetup.image.url}}"/>
+<h1>Title:{{meetup.title}}</h1>
+<p>description:{{meetup.description}}</p>
+<span><p>Organizer Email:{{meetup.organizer_email}}</p></span>
+<h2>Created by: {{meetup.user}}</h2>
+
+<h1>Join Us</h1>
+<form method="POST" action="" >
+    {%csrf_token%}
+    {{form.as_p}}
+
+<button>Join Us</button>
+
+</form>
+
+<p><a href="{% url 'home'%}">Back</a></p>

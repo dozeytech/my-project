@@ -1,0 +1,58 @@
+{% extends 'my_meetup/main.html'%}
+{% block title%}Meetup Details{% endblock%}
+{%block slider%}{% endblock%}
+
+
+{%block meetup%}{% endblock%}
+
+
+{%block about%}
+<div id="about" class="about">
+    <div class="container">
+       <div class="row">
+          <div class="col-md-12">
+             <div class=" text-uppercase">
+                <h1 class="text-danger">About {{meetup.title}}</h1>
+                
+             </div>
+             <span><strong>Address:</strong> {{meetup.location_address}}</span>
+          </div>
+       </div>
+    </div>
+    <div class="container-fluid">
+       <div class="row flexcss">
+          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+             <div class="about-box">
+                <h3>{{meetup.title}} </h3>
+                <p>{{meetup.description}}</p><br>
+              <strong><span class="text-danger"> Date:  {{meetup.from_date}} -  {{meetup.to_date}}</span></strong>
+              
+              <br>
+              <br>
+                 <h2>Send Your Email To Us</h2>
+                 <form action="" method="POST">
+                    {%csrf_token%}
+                    {{form.as_p}}
+                  <button class="btn btn-outline-danger mt-2 ">Join Us</button>
+
+
+                 </form>
+             </div>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+              <div class=" w-60">
+
+                <figure><img src={{meetup.image.url}} alt="img"/></figure>
+                
+             </div>
+            
+          </div>
+       </div>
+    
+       <a href="{%url 'home'%}">Explore more</a>
+    </div>
+ </div>
+{%endblock%}
+{%block services%}{%endblock%}
+
+{%block Testimonial%}{%endblock%}

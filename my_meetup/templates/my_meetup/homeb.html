@@ -1,0 +1,70 @@
+<html>
+<head>
+    <title>home</title>
+</head>
+<body>
+    {% if request.user.is_authenticated%}
+    <p>Welcome! {{request.user.username}}</p>
+    <hr>
+    <p><a href ="{% url 'logout'%}">Logout</a></p>
+    {% else%}
+    <span><a href="{%url 'login'%}">Login</a></span>
+    <span><p><a href="{% url 'register' %}"> Register</a></p></span>
+    {%endif%}
+
+
+
+    <h1>Welcome to meetups App</h1>
+    {%if request.user.is_authenticated%}
+    <h3><a href="{% url 'create-meetup'%}">Add Meetups</a></h3><br>
+    <h3><a href="{% url 'user-meetups' request.user.id %}">User Meetups</a></h3><br>
+    <hr>
+    {%endif%}
+    <form method="GET" action="">
+        {%csrf_token%}
+        <input type="text" name="q" placeholder="search"required/> 
+        <input type="submit" value="search"/>
+
+
+
+    </form>
+    <a href="{%url 'home'%}">All</a>
+    <span><a href="{%url 'upcoming-meetups'%}">Upcoming  Meetups</a></span>
+    <hr>
+    <table width="500px" border="3" style="background-color:burlywood; text-align:center">
+
+        <tr>   
+            <th>#</th>
+            <th>Title</th> 
+            <th> organizer Email</th>
+            <th>description</th>
+           
+            <th>View</th>
+            
+        </tr>
+        {% for meetup in meetups%}
+        <tr>
+            <td>1</td>
+            
+            <td>{{meetup.title}}</td>
+            <td>{{meetup.organizer_email}}</td>
+            <td>{{meetup.description}}</td>
+           
+            <td><a href=" {% url 'meetup-details' meetup.id%}" target="_new">View</a></td>
+            
+            
+            
+
+        </tr>
+        
+        {%endfor%}
+
+
+
+
+    </table>
+    <p>Number of meetups: {{count}}</p>
+    
+    
+</body>
+</html>
